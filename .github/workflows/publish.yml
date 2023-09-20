@@ -1,4 +1,4 @@
-name: fetchSDK with Typescript
+name: fetchsdk with ts
 
 on:
   push:
@@ -23,8 +23,6 @@ jobs:
 
       - name: Publish to GitHub Package Registry
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Clean Up
         run: npm cache clean --force
