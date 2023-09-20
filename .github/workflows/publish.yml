@@ -1,0 +1,30 @@
+name: fetchSDK with Typescript
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.17.1"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Publish to GitHub Package Registry
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean Up
+        run: npm cache clean --force
