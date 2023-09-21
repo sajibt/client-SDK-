@@ -9,23 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MySDK = void 0;
+exports.fetchData = void 0;
 const axios_1 = require("axios");
-class MySDK {
-    constructor(baseUrl) {
-        this.baseUrl = baseUrl;
-    }
-    fetchData(endpoint) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const url = `${this.baseUrl}/${endpoint}`;
-            try {
-                const response = yield axios_1.default.get(url);
-                return response.data;
-            }
-            catch (error) {
-                throw new Error(`Error fetching data from ${url}: ${error.message}`);
-            }
-        });
-    }
+function fetchData(baseUrl, endpoint) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const url = `${baseUrl}/${endpoint}`;
+        try {
+            const response = yield axios_1.default.get(url);
+            return response.data;
+        }
+        catch (error) {
+            throw new Error(`Error fetching data from ${url}: ${error.message}`);
+        }
+    });
 }
-exports.MySDK = MySDK;
+exports.fetchData = fetchData;
